@@ -1,0 +1,123 @@
+Experiment 1 - Dress Service
+
+One-line run command (PowerShell):
+cd 'v:\basic-api-cls\springboot\springboot\exp1\dress-service'; .\mvnw.cmd spring-boot:run
+
+Endpoints (use http):
+- GET http://localhost:8080/api/info
+- GET http://localhost:8080/api/dresses
+- GET http://localhost:8080/api/dresses/1
+- POST http://localhost:8080/api/dresses
+  - Header: Content-Type: application/json
+  - Body (JSON):
+    {
+      "id": 3,
+      "name": "Denim Casual Dress",
+      "category": "Casual",
+      "price": 1599,
+      "size": "M"
+    }
+- PUT http://localhost:8080/api/dresses/1
+  - Header: Content-Type: application/json
+  - Body (JSON):
+    {
+      "id": 1,
+      "name": "Premium Floral Summer Dress",
+      "category": "Casual",
+      "price": 1499,
+      "size": "L"
+    }
+- DELETE http://localhost:8080/api/dresses/3
+
+
+Experiment 2 - Customer Service + Order Service
+
+One-line run commands (open two terminals):
+cd 'v:\basic-api-cls\springboot\springboot\exp2\customer-service'; .\mvnw.cmd spring-boot:run
+cd 'v:\basic-api-cls\springboot\springboot\exp2\order-service'; .\mvnw.cmd spring-boot:run
+
+Customer endpoints (http://localhost:8081):
+- GET http://localhost:8081/api/info
+- GET http://localhost:8081/api/customers
+- GET http://localhost:8081/api/customers/1
+- POST http://localhost:8081/api/customers
+  - Header: Content-Type: application/json
+  - Body (JSON):
+    {
+      "id": 3,
+      "name": "Rahul",
+      "email": "rahul@gmail.com",
+      "phone": "9876012345"
+    }
+
+Order endpoints (http://localhost:8082):
+- GET http://localhost:8082/api/info
+- GET http://localhost:8082/api/orders
+- GET http://localhost:8082/api/orders/1
+- POST http://localhost:8082/api/orders
+  - Header: Content-Type: application/json
+  - Body (JSON):
+    {
+      "id": 3,
+      "customerId": 1,
+      "dressName": "Denim Casual Dress",
+      "amount": 1599,
+      "status": "Confirmed"
+    }
+
+
+Experiment 3 - Service-to-Service (RestTemplate)
+
+One-line run commands (open two terminals):
+cd 'v:\basic-api-cls\springboot\springboot\exp3\customer-service'; .\mvnw.cmd spring-boot:run
+cd 'v:\basic-api-cls\springboot\springboot\exp3\order-service'; .\mvnw.cmd spring-boot:run
+
+Test endpoints:
+- GET http://localhost:8081/api/customers/1
+- GET http://localhost:8082/api/orders/1
+- GET http://localhost:8082/api/orders/1/customer  (order-service calls customer-service internally)
+
+(POST/PUT for services same as Experiment 2 examples)
+
+
+Experiment 4 - API Gateway + Services
+
+One-line run commands (open three terminals):
+cd 'v:\basic-api-cls\springboot\springboot\exp4\customer-service'; .\mvnw.cmd spring-boot:run
+cd 'v:\basic-api-cls\springboot\springboot\exp4\order-service'; .\mvnw.cmd spring-boot:run
+cd 'v:\basic-api-cls\springboot\springboot\exp4\api-gateway'; .\mvnw.cmd spring-boot:run
+
+Gateway endpoints (use gateway URLs at http://localhost:8080):
+- GET http://localhost:8080/api/customers/1  -> routes to customer-service
+- GET http://localhost:8080/api/orders/1     -> routes to order-service
+- GET http://localhost:8080/api/orders/1/customer -> demonstrates gateway + internal call
+
+
+Experiment 5 - Standalone Order Service
+
+One-line run command (PowerShell):
+cd 'v:\basic-api-cls\springboot\springboot\exp5\order-service'; .\mvnw.cmd spring-boot:run
+
+Endpoints (http://localhost:8081):
+- GET http://localhost:8081/api/orders
+- GET http://localhost:8081/api/orders/1
+- POST http://localhost:8081/api/orders
+  - Header: Content-Type: application/json
+  - Body (JSON):
+    {
+      "id": 3,
+      "customerId": 1,
+      "dressName": "Denim Casual Dress",
+      "amount": 1599,
+      "status": "Confirmed"
+    }
+- PUT http://localhost:8081/api/orders/1
+  - Header: Content-Type: application/json
+  - Body (JSON): similar to POST
+- DELETE http://localhost:8081/api/orders/3
+
+
+Notes:
+- Use one terminal per running service (multiple services cannot share a single terminal process).
+- Use the integrated VS Code Terminal (Ctrl+`) to paste commands. If you paste multiple lines into some VS Code quick-run fields, it may reject them; paste into the Terminal prompt.
+- All URLs use http and localhost since these services run locally without TLS.

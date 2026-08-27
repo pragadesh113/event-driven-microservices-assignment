@@ -1,0 +1,14 @@
+{
+  "name": "basic-api-cls",
+  "version": "1.0.0",
+  "description": "Simple CRUD API for Postman testing",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}

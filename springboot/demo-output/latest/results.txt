@@ -1,0 +1,100 @@
+Event-Driven Microservices - Demo Results
+
+
+[Experiment 1]
+{"service":"Restaurant Service","status":"RUNNING","description":"Provides restaurant and menu information"}
+
+[Experiment 2]
+{"customer":{"id":1,"name":"User1","email":"user1@example.com","phone":"0000000001"},"order":{"id":1,"customerId":1,"itemName":"Veg Pizza","amount":299.0,"status":"Confirmed"}}
+
+[Experiment 3]
+{"email":"user1@example.com","id":1,"name":"User1","phone":"0000000001"}
+
+[Experiment 4]
+{"gatewayCustomer":{"id":1,"name":"User1","email":"user1@example.com","phone":"0000000001"},"gatewayOrder":{"id":1,"customerId":1,"itemName":"Veg Pizza","amount":299.0,"status":"Confirmed"}}
+
+[Experiment 5]
+Published order 1d8e0b2c-e07c-4a8c-8ac2-7eca1ed49eba
+Timeout: 60.0 seconds ...
+Listing queues for vhost / ...
+name	messages
+order.retry.queue	0
+notification.queue	1
+analytics.queue	1
+order.processing.queue	0
+order.dead-letter.queue	0
+order.queue	1
+
+[Experiment 6]
+Published b5746475-8493-4513-9a63-d607309c323d
+Order ID: b5746475-8493-4513-9a63-d607309c323d
+Product: Masala Dosa
+Quantity: 1
+
+[Experiment 7]
+Published 075a3113-04b4-4392-8565-6733c28530e2
+Notification:
+2026-08-10T21:08:11.208+05:30  INFO 13760 --- [notification-service] [           main] c.e.n.NotificationServiceApplication     : Starting NotificationServiceApplication v0.0.1-SNAPSHOT using Java 21.0.9 with PID 13760 (V:\basic-api-cls\springboot\springboot\exp7\notification-service\target\notification-service-0.0.1-SNAPSHOT.jar started by radhi in V:\basic-api-cls\springboot\springboot\exp7\notification-service\target)
+2026-08-10T21:08:11.210+05:30  INFO 13760 --- [notification-service] [           main] c.e.n.NotificationServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-08-10T21:08:12.207+05:30  INFO 13760 --- [notification-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-08-10T21:08:12.221+05:30  INFO 13760 --- [notification-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-10T21:08:12.221+05:30  INFO 13760 --- [notification-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-08-10T21:08:12.242+05:30  INFO 13760 --- [notification-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 978 ms
+2026-08-10T21:08:12.998+05:30  INFO 13760 --- [notification-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-08-10T21:08:13.005+05:30  INFO 13760 --- [notification-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-08-10T21:08:13.055+05:30  INFO 13760 --- [notification-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#357bc488:0/SimpleConnection@3520958b [delegate=amqp://guest@127.0.0.1:5672/, localPort=59181]
+2026-08-10T21:08:13.123+05:30  INFO 13760 --- [notification-service] [           main] c.e.n.NotificationServiceApplication     : Started NotificationServiceApplication in 2.36 seconds (process running for 2.89)
+===== Notification Service =====
+Order Created Notification
+Order ID: 075a3113-04b4-4392-8565-6733c28530e2
+Product: Paneer Biryani
+Analytics:
+2026-08-10T21:08:14.215+05:30  INFO 26436 --- [analytics-service] [           main] c.e.a.AnalyticsServiceApplication        : Starting AnalyticsServiceApplication v0.0.1-SNAPSHOT using Java 21.0.9 with PID 26436 (V:\basic-api-cls\springboot\springboot\exp7\analytics-service\target\analytics-service-0.0.1-SNAPSHOT.jar started by radhi in V:\basic-api-cls\springboot\springboot\exp7\analytics-service\target)
+2026-08-10T21:08:14.221+05:30  INFO 26436 --- [analytics-service] [           main] c.e.a.AnalyticsServiceApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-08-10T21:08:15.199+05:30  INFO 26436 --- [analytics-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-08-10T21:08:15.213+05:30  INFO 26436 --- [analytics-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-10T21:08:15.213+05:30  INFO 26436 --- [analytics-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-08-10T21:08:15.234+05:30  INFO 26436 --- [analytics-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 949 ms
+2026-08-10T21:08:15.915+05:30  INFO 26436 --- [analytics-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-08-10T21:08:15.915+05:30  INFO 26436 --- [analytics-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-08-10T21:08:15.962+05:30  INFO 26436 --- [analytics-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7ecda95b:0/SimpleConnection@76c86567 [delegate=amqp://guest@127.0.0.1:5672/, localPort=59188]
+2026-08-10T21:08:16.025+05:30  INFO 26436 --- [analytics-service] [           main] c.e.a.AnalyticsServiceApplication        : Started AnalyticsServiceApplication in 2.256 seconds (process running for 2.75)
+===== Analytics Service =====
+Order ID: 075a3113-04b4-4392-8565-6733c28530e2
+Product: Paneer Biryani
+Analytics updated for product: Paneer Biryani
+
+[Experiment 8]
+Worker-1 processed order 662440e1-702b-4aec-8d4f-c544e917bf03 - FoodItem1 x 1
+Worker-2 processed order ec06c658-332e-4e46-83cb-293561feae8d - FoodItem2 x 1
+Worker-1 processed order 5c65544a-9215-4196-a029-d851479c2751 - FoodItem3 x 1
+Worker-2 processed order 305659f4-0a59-48d4-a0b8-3d2ad1c24524 - FoodItem4 x 1
+Worker-1 processed order 6d79256b-c242-49f5-9083-9103dea5e0f5 - FoodItem5 x 1
+Worker-2 processed order ecbff7fd-7a3e-4b45-9be4-6633701407de - FoodItem6 x 1
+
+[Experiment 9]
+Processing 8e0f4791-7f60-4277-98d5-055f0017ee0a, attempt 1
+Order processed successfully: Idli
+Processing c1d84099-334d-45bf-ad99-969d49531125, attempt 1
+Processing c1d84099-334d-45bf-ad99-969d49531125, attempt 2
+Processing c1d84099-334d-45bf-ad99-969d49531125, attempt 3
+Processing c1d84099-334d-45bf-ad99-969d49531125, attempt 4
+DLQ received failed order: c1d84099-334d-45bf-ad99-969d49531125
+
+[Experiment 10]
+{"id":1,"customerName":"Asha","address":{"street":"MG Road","city":"Bengaluru","pincode":"560001"},"items":[{"productName":"Veg Thali","quantity":2,"price":180.0}]}
+
+[Experiment 11]
+{"eventId":"5ca0b08c-6a2f-4d26-9c51-cdbb3369fe8c","orderId":"1b1957c8-a3e4-4d8a-9d60-590d6d90753b","itemName":"Veg Burger","quantity":2,"occurredAt":"2026-08-10T15:38:51.174049800Z"}
+
+[Experiment 12]
+{"orderId":"ORD-12","itemName":"Pizza","status":"PAID"}
+
+[Experiment 13]
+[{"finalState":"DELIVERY_ASSIGNED:Partner-01","orderId":"ORD-13A"},{"finalState":"CANCELLED_PAYMENT_FAILED","orderId":"ORD-13B"},{"finalState":"REFUND_REQUIRED_DELIVERY_FAILED","orderId":"ORD-13C"}]
+
+[Experiment 14]
+[{"result":"PROCESSED","businessUpdateCount":1},{"result":"DUPLICATE_IGNORED","businessUpdateCount":1}]
+
+[Experiment 15]
+{"orderContext":"PAID","paymentContext":"COMPLETED:8f798660-dade-4e80-9033-cc0b6c8dc235","deliveryContext":"ASSIGNED:Partner-01"}

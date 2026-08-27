@@ -1,0 +1,27 @@
+# Java / Maven build output
+**/target/
+*.class
+
+# IDE and operating-system files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Codex-generated temporary workspace files
+.codex-work/
+
+# Runtime logs (the verified summary remains in demo-output/latest/results.txt)
+*.log
+
+# Python cache files and editor lock/backup files
+__pycache__/
+*.py[cod]
+.LCK*
+*~
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
